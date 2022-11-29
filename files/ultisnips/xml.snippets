@@ -1,0 +1,148 @@
+# xml.snippets
+
+# A valid snippet should starts with:
+#
+#   snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#   endsnippet
+#
+# Snippet options:
+#
+#   b - Beginning of line.
+#   i - In-word expansion.
+#   w - Word boundary.
+#   r - Regular expression
+#   e - Custom context snippet
+#   A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#   snippet emitter "emitter properties" b
+#   private readonly ${1} = new Emitter<$2>()
+#   public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#   endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet ~xml "Odoo XML File Boilerplate"
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+    $1
+  </data>
+</odoo>
+endsnippet
+
+snippet ~formview "Odoo Form View"
+<record id="$1" model="ir.ui.view">
+  <field name="name">${2:$1}</field>
+  <field name="model">$3</field>
+  <field name="inherit_id" ref="$4" />
+  <field name="arch" type="xml">
+    <form string="$2">
+        <header>
+        </header>
+        <sheet>
+         <div class="oe_title">
+           <h1 class="o_row">
+               <field name="name" placeholder="Title ... " />
+             </h1>
+         </div>
+        </sheet>
+    </form>
+  </field>
+</record>
+endsnippet
+
+snippet ~treeview "Odoo Tree View"
+<record id="$1" model="ir.ui.view">
+  <field name="name">$1</field>
+  <field name="model">$2</field>
+  <field name="inherit_id" ref="$3" />
+  <field name="arch" type="xml">
+    <tree>
+      $4
+    </tree>
+  </field>
+</record>
+endsnippet
+
+snippet ~searchview "Odoo Search View"
+<record id="$1" model="ir.ui.view">
+  <field name="name">$1</field>
+  <field name="model"></field>
+  <field name="arch" type="xml">
+     <search string="$1">
+      <field name="name" string="Tasks" />
+      <field name="foo" string="Tasks" domain_force="[('foo', '>=', self)]" />
+      <filter string="My Tasks" name="my_tasks" domain="[('user_id','=',uid)]"/>
+      <filter string="My Followed Tasks" domain="[('message_is_follower', '=', True)]" />
+      <filter string="Unassigned" name="unassigned" domain="[('user_id', '=', False)]"/>
+      <separator/>
+      <filter string="Late Activities" name="activities_overdue"
+              domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+              help="Show all records which has next action date is before today"/>
+      <group expand="0" string="Group By">
+              <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+              <separator/>
+              <filter string="Last Message" name="group_message_last_post" context="{'group_by':'message_last_post:week'}" invisible="1"/>
+      </group>
+    </search>
+  </field>
+</record>
+endsnippet
+
+snippet ~action "Odoo Window Action"
+<record id="$1" model="ir.actions.act_window">
+  <field name="name">$2</field>
+  <field name="res_model">$3</field>
+  <field name="view_mode">tree,form</field>
+</record>
+endsnippet
+
+snippet ~template "Odoo Template Record"
+<record id="homepage_custom" model="ir.ui.view">
+  <field name="name">Custom homepage</field>
+  <field name="type">qweb</field>
+  <field name="inherit_id" search="[('website_id', '=', 1), ('key', '=', 'website.homepage')]"/>
+  <field name="key">website.homepage.custom</field>
+  <field name="website_id" eval="1" />
+  <field name="arch" type="xml">
+    <t t-call="website.layout">
+      <!-- Your custom content here -->
+      <p>Some example text</p>
+  </field>
+</record>
+endsnippet
+
+
+snippet ~serveraction "Odoo Server Action"
+<record id="$1" model="ir.actions.server">
+  <field name="name">$2: LABEL/field>
+  <field name="type">ir.actions.server</field>
+  <field name="model_id" ref="$2.model_MODEL" />
+  <field name="binding_model_id" ref="$2.model_MODEL" />
+  <field name="state">code</field>
+  <field name="code">records.ACTION</field>
+</record>
+endsnippet
+
+snippet ~automatedaction "Odoo Automated Action"
+<record id="action_auto_set_$1" model="base.automation">
+    <field name="name">$2: DESCRIPTION</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" ref="$2.model_MODEL"/>
+    <field name="state">code</field>
+    <field name="code">
+    </field>
+    <field name="trigger">TRIGGER</field>
+    <field name="filter_domain"></field>
+</record>
+endsnippet
+
+snippet ~archivedribbon "Odoo Archived Ribbon Widget"
+    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+endsnippet
+
