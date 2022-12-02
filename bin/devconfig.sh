@@ -23,7 +23,7 @@ freeze_snippets() {
 }
 
 thaw_snippets() {
-  cp -r "$DEVCONFIG_FILES/ultisnips" "$COC_ROOT/ultisnips"
+  cp -r "$DEVCONFIG_FILES/ultisnips" "$COC_ROOT"
 }
 
 freeze_vimrc() {
