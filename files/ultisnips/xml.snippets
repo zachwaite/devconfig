@@ -26,7 +26,7 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet ~xml "Odoo XML File Boilerplate"
+snippet _xml "Odoo XML File Boilerplate"
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
   <data>
@@ -35,7 +35,7 @@ snippet ~xml "Odoo XML File Boilerplate"
 </odoo>
 endsnippet
 
-snippet ~formview "Odoo Form View"
+snippet _formview "Odoo Form View"
 <record id="$1" model="ir.ui.view">
   <field name="name">${2:$1}</field>
   <field name="model">$3</field>
@@ -56,7 +56,7 @@ snippet ~formview "Odoo Form View"
 </record>
 endsnippet
 
-snippet ~treeview "Odoo Tree View"
+snippet _treeview "Odoo Tree View"
 <record id="$1" model="ir.ui.view">
   <field name="name">$1</field>
   <field name="model">$2</field>
@@ -69,7 +69,7 @@ snippet ~treeview "Odoo Tree View"
 </record>
 endsnippet
 
-snippet ~searchview "Odoo Search View"
+snippet _searchview "Odoo Search View"
 <record id="$1" model="ir.ui.view">
   <field name="name">$1</field>
   <field name="model"></field>
@@ -94,7 +94,7 @@ snippet ~searchview "Odoo Search View"
 </record>
 endsnippet
 
-snippet ~action "Odoo Window Action"
+snippet _action "Odoo Window Action"
 <record id="$1" model="ir.actions.act_window">
   <field name="name">$2</field>
   <field name="res_model">$3</field>
@@ -102,7 +102,7 @@ snippet ~action "Odoo Window Action"
 </record>
 endsnippet
 
-snippet ~template "Odoo Template Record"
+snippet _template "Odoo Template Record"
 <record id="homepage_custom" model="ir.ui.view">
   <field name="name">Custom homepage</field>
   <field name="type">qweb</field>
@@ -118,7 +118,7 @@ snippet ~template "Odoo Template Record"
 endsnippet
 
 
-snippet ~serveraction "Odoo Server Action"
+snippet _serveraction "Odoo Server Action"
 <record id="$1" model="ir.actions.server">
   <field name="name">$2: LABEL/field>
   <field name="type">ir.actions.server</field>
@@ -129,7 +129,7 @@ snippet ~serveraction "Odoo Server Action"
 </record>
 endsnippet
 
-snippet ~automatedaction "Odoo Automated Action"
+snippet _automatedaction "Odoo Automated Action"
 <record id="action_auto_set_$1" model="base.automation">
     <field name="name">$2: DESCRIPTION</field>
     <field name="active" eval="True"/>
@@ -142,7 +142,17 @@ snippet ~automatedaction "Odoo Automated Action"
 </record>
 endsnippet
 
-snippet ~archivedribbon "Odoo Archived Ribbon Widget"
+snippet _archivedribbon "Odoo Archived Ribbon Widget"
     <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+endsnippet
+
+snippet _menuitem "Odoo Menu Item" b
+<menuitem
+  id="menu_hr_root"
+  name="Employees"
+  groups="group_hr_manager,group_hr_user,base.group_user"
+  web_icon="hr,static/description/icon.png"
+  action="action_account_fiscal_year"
+  sequence="185"/>
 endsnippet
 
