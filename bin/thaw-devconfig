@@ -8,4 +8,5 @@ set -o nounset
 source "$DEVCONFIG_ROOT/bin/devconfig.sh"
 
 thaw_vimrc
+thaw_tmuxconf
 thaw_snippets

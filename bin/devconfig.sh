@@ -15,6 +15,7 @@ fi;
 COC_ROOT=$XDG_CONFIG_HOME/coc
 DEVCONFIG_FILES="$DEVCONFIG_ROOT/files"
 VIMRC=$HOME/.vimrc
+TMUXCONF=$HOME/.tmux.conf
 
 freeze_snippets() {
   rm -rf "$DEVCONFIG_FILES/ultisnips"
@@ -31,5 +32,14 @@ freeze_vimrc() {
 
 thaw_vimrc() {
   cp "$DEVCONFIG_FILES/vimrc" "$VIMRC" 
+}
+
+
+freeze_tmuxconf() {
+  cp "$TMUXCONF" "$DEVCONFIG_FILES/tmux.conf"
+}
+
+thaw_tmuxconf() {
+  cp "$DEVCONFIG_FILES/tmux.conf" "$TMUXCONF" 
 }
 
