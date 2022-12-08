@@ -15,7 +15,18 @@ fi;
 COC_ROOT=$XDG_CONFIG_HOME/coc
 DEVCONFIG_FILES="$DEVCONFIG_ROOT/files"
 VIMRC=$HOME/.vimrc
+INITVIMRC=$XDG_CONFIG_HOME/nvim/init.vim
 TMUXCONF=$HOME/.tmux.conf
+
+declare_dir(){
+  if [ -d "$1" ]
+    then
+      echo "$1 already exists. Skipping"
+  else
+      echo "Creating $1"
+      mkdir -p "$1"
+  fi
+}
 
 freeze_snippets() {
   rm -rf "$DEVCONFIG_FILES/ultisnips"
@@ -23,6 +34,7 @@ freeze_snippets() {
 }
 
 thaw_snippets() {
+  declare_dir "$COC_ROOT"
   cp -r "$DEVCONFIG_FILES/ultisnips" "$COC_ROOT"
 }
 
@@ -32,6 +44,14 @@ freeze_vimrc() {
 
 thaw_vimrc() {
   cp "$DEVCONFIG_FILES/vimrc" "$VIMRC" 
+}
+
+freeze_initvimrc() {
+  cp "$INITVIMRC" "$DEVCONFIG_FILES/init.vim"
+}
+
+thaw_initvimrc() {
+  cp "$DEVCONFIG_FILES/init.vim" "$INITVIMRC" 
 }
 
 

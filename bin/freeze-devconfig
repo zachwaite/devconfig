@@ -10,3 +10,4 @@ source "$DEVCONFIG_ROOT/bin/devconfig.sh"
 freeze_snippets
 freeze_vimrc
 freeze_tmuxconf
+freeze_initvimrc
