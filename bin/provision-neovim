@@ -10,7 +10,6 @@ NODE_VERSION=19.0.0
 
 NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 if [ -z ${XDG_CONFIG_HOME+x} ]; then
   echo "XDG_CONFIG_HOME not set. Setting it to ~/.config for this script.";
@@ -79,6 +78,11 @@ export VISUAL="\$EDITOR"
 EOF
 }
 
+install_pyenv(){
+  echo "Installing pyenv"
+  curl https://pyenv.run | bash
+}
+
 
 # ========================= MAINLINE =======================================
 
@@ -89,3 +93,4 @@ install_node
 install_vim_plug
 install_vim_plugins
 extend_bashrc
+install_pyenv
