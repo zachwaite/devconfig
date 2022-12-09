@@ -11,12 +11,12 @@ thaw_vimrc
 thaw_tmuxconf
 thaw_snippets
 thaw_initvimrc
+thaw_bashrc
 
 cat << EOF
-Remember this DOES NOT thaw .bashrc!
 Remember to add this to your bashrc:
 
 # devconfig
-export DEVCONFIG_ROOT=/home/zach/VimProjects/devconfig
-export PATH="\$PATH:/home/zach/VimProjects/devconfig/bin"
+export DEVCONFIG_ROOT=~/VimProjects/devconfig
+export PATH="\$PATH:~/VimProjects/devconfig/bin"
 EOF

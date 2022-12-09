@@ -16,6 +16,7 @@ COC_ROOT=$XDG_CONFIG_HOME/coc
 DEVCONFIG_FILES="$DEVCONFIG_ROOT/files"
 VIMRC=$HOME/.vimrc
 BASHRC=$HOME/.bashrc
+OLD_BASHRC=$HOME/.old-bashrc
 NVIM_CONFIG_ROOT=$XDG_CONFIG_HOME/nvim
 TMUXCONF=$HOME/.tmux.conf
 
@@ -61,12 +62,11 @@ freeze_bashrc() {
   cp "$BASHRC" "$DEVCONFIG_FILES/bashrc"
 }
 
-# thawing bashrc is a little less reliable because the OS puts some entries first
-# keep this manual
-# thaw_bashrc() {
-#   cp "$DEVCONFIG_FILES/bashrc" "$NVIM_CONFIG_ROOT/init.vim" 
-# }
-
+thaw_bashrc() {
+  # small chance that this will break bashrc so save backup
+  mv "$BASHRC" "$OLD_BASHRC"
+  cp "$DEVCONFIG_FILES/bashrc" "$BASHRC" 
+}
 
 freeze_tmuxconf() {
   cp "$TMUXCONF" "$DEVCONFIG_FILES/tmux.conf"
