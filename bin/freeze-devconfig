@@ -11,3 +11,4 @@ freeze_snippets
 freeze_vimrc
 freeze_tmuxconf
 freeze_initvimrc
+freeze_bashrc

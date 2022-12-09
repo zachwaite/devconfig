@@ -15,7 +15,8 @@ fi;
 COC_ROOT=$XDG_CONFIG_HOME/coc
 DEVCONFIG_FILES="$DEVCONFIG_ROOT/files"
 VIMRC=$HOME/.vimrc
-INITVIMRC=$XDG_CONFIG_HOME/nvim/init.vim
+BASHRC=$HOME/.bashrc
+NVIM_CONFIG_ROOT=$XDG_CONFIG_HOME/nvim
 TMUXCONF=$HOME/.tmux.conf
 
 declare_dir(){
@@ -35,6 +36,7 @@ freeze_snippets() {
 
 thaw_snippets() {
   declare_dir "$COC_ROOT"
+  declare_dir "$COC_ROOT/extensions"
   cp -r "$DEVCONFIG_FILES/ultisnips" "$COC_ROOT"
 }
 
@@ -47,12 +49,23 @@ thaw_vimrc() {
 }
 
 freeze_initvimrc() {
-  cp "$INITVIMRC" "$DEVCONFIG_FILES/init.vim"
+  cp "$NVIM_CONFIG_ROOT/init.vim" "$DEVCONFIG_FILES/init.vim"
 }
 
 thaw_initvimrc() {
-  cp "$DEVCONFIG_FILES/init.vim" "$INITVIMRC" 
+  declare_dir "$NVIM_CONFIG_ROOT"
+  cp "$DEVCONFIG_FILES/init.vim" "$NVIM_CONFIG_ROOT/init.vim" 
 }
+
+freeze_bashrc() {
+  cp "$BASHRC" "$DEVCONFIG_FILES/bashrc"
+}
+
+# thawing bashrc is a little less reliable because the OS puts some entries first
+# keep this manual
+# thaw_bashrc() {
+#   cp "$DEVCONFIG_FILES/bashrc" "$NVIM_CONFIG_ROOT/init.vim" 
+# }
 
 
 freeze_tmuxconf() {
