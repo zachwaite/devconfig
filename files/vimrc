@@ -5,8 +5,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'sheerun/vim-polyglot'
   Plug 'whatyouhide/vim-gotham'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-  " Plug 'tpope/vim-surround'
   Plug 'andlrc/rpgle.vim', {'branch': 'master'}
+  Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()                                                                         
 
 " ============================ begin coc ====================================
@@ -155,3 +155,4 @@ autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'python.sortImpor
 " }
 "
 "
+lua require'colorizer'.setup()

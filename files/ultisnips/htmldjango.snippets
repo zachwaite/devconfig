@@ -24,12 +24,18 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet _prelude "Bash script prelude" b
-#! /usr/bin/env bash
-
-set -o errexit
-set -o xtrace
-set -o nounset
-
-
+snippet _tera_base "Tera base template" b
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>
+      {% block title %}{% endblock title %}
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  </head>
+  <body>
+    {% block content %}{% endblock content %}
+  </body>
+</html>
 endsnippet
