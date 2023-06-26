@@ -1,0 +1,57 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet _setup.cfg "setup.cfg" b
+[metadata]
+name = $1
+version = 0.0.1
+author = Telescope Casual Furniture - Zach Waite
+author_email = zwaite@telescopecasual.com
+description = $2
+long_description = file: README.md
+long_description_content_type = text/markdown
+url = https://github.com/TelescopeCasual/$1
+project_urls =
+  Bug Tracker = https://github.com/TelescopeCasual/$1/issues
+classifiers =
+  Programming Language :: Python :: 3
+  License :: OSI Approved :: MIT License
+  Operating System :: OS Independent
+
+[options]
+package_dir =
+  = python-src
+packages = find:
+python_requires = >=3.10
+install_requires =
+
+[options.packages.find]
+where = src
+
+[options.entry_points]
+console_scripts =
+  # $1-bootstrap = $1.cli.bootstrap:main
+endsnippet

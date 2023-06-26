@@ -155,5 +155,8 @@ export PATH="$PATH:/home/zach/VimProjects/rpglefmt"
 export DEVCONFIG_ROOT=/home/zach/VimProjects/devconfig
 export PATH="$PATH:/home/zach/VimProjects/devconfig/bin"
 
-alias zmux="zellij --layout compact attach --create zzz"
-
+zmux() {
+    local session_name="${1:-zzz}";
+    zellij --layout compact attach --create "$session_name";
+}
+export -f zmux

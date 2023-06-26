@@ -24,15 +24,11 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet _prelude "Bash script prelude" b
-#! /usr/bin/env bash
-
-set -o errexit
-set -o nounset
-
-
-# ================================== Main =============================================
-
-
-
+snippet _pyproject.toml "Pyproject.toml" b
+[build-system]
+requires = [
+  "setuptools>42",
+  "wheel",
+]
+build-backend = "setuptools.build_meta"
 endsnippet

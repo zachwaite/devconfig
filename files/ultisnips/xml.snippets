@@ -156,3 +156,22 @@ snippet _menuitem "Odoo Menu Item" b
   sequence="185"/>
 endsnippet
 
+snippet _scheduledaction "Odoo Scheduled Action"
+  <record forcecreate="True" id="cron_action_sync_employees" model="ir.cron">
+    <field name="name">TCF: Sync Employees</field>
+    <field name="model_id" ref="model_employee_badge"/>
+    <field name="state">code</field>
+    <field name="code">
+PrmService = env["prm.service"]
+PrmService.sync_prm()
+    </field>
+    <field name="user_id" ref="base.user_root"/>
+    <field name="interval_number">1</field>
+    <field name="interval_type">hours</field>
+    <field name="numbercall">-1</field>
+    <field name="doall" eval="1" />
+    <field name="active" eval="1" />
+    <field name="priority" eval="1" />
+  </record>
+endsnippet
+

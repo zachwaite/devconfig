@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'andlrc/rpgle.vim', {'branch': 'master'}
   Plug 'norcalli/nvim-colorizer.lua'
+  Plug 'mfussenegger/nvim-dap'
 call plug#end()                                                                         
 
 " ============================ begin coc ====================================
@@ -156,3 +157,8 @@ autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'python.sortImpor
 "
 "
 lua require'colorizer'.setup()
+au BufReadPost *.sh.nocommit set syntax=bash
+au BufReadPost *.mk.nocommit set syntax=bash
+au BufReadPost *.py.nocommit set syntax=python
+au BufReadPost *.rs.nocommit set syntax=rust
+au BufReadPost *.sql.nocommit set syntax=sql
