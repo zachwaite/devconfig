@@ -57,8 +57,12 @@ snippet _manifest "Odoo __manifest__.py file"
 }
 endsnippet
 
-snippet _debug "Insert debugger line"
+snippet _olddebug "Insert debugger line"
 __import__("ipdb").set_trace()
+endsnippet
+
+snippet _debug "New Debugger"
+__import__('IPython').core.debugger.Pdb().set_trace()
 endsnippet
 
 snippet _inline_test "Add python inline test"
